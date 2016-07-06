@@ -687,7 +687,7 @@ sai_status_t handle_tunnel(
     SWSS_LOG_ENTER();
 
     int index = 0;
-    sai_tunnel_id_t tunnel_id;
+    sai_object_id_t tunnel_id;
     sai_deserialize_primitive(str_object_id, index, tunnel_id);
 
     switch(api)
