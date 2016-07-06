@@ -818,6 +818,10 @@ sai_status_t processEvent(swss::ConsumerTable &consumer)
             status = handle_vlan(str_object_id, api, attr_count, attr_list);
             break;
 
+        case SAI_OBJECT_TYPE_TUNNEL:
+            status = handle_tunnel(str_object_id, api, attr_count, attr_list);
+            break;
+
         case SAI_OBJECT_TYPE_TRAP:
             status = handle_trap(str_object_id, api, attr_count, attr_list);
             break;
