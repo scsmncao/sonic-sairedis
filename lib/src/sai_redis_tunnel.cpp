@@ -121,7 +121,6 @@ sai_status_t  redis_get_tunnel_map_attribute(
  *    @return SAI_STATUS_SUCCESS on success
  *            Failure status code on error
  *
- * Note: IP address expected in Network Byte Order.
  */
 sai_status_t  redis_create_tunnel(
     _Out_ sai_object_id_t* tunnel_id,
