@@ -26,6 +26,7 @@ sai_scheduler_api_t          *sai_scheduler_api;
 sai_scheduler_group_api_t    *sai_scheduler_group_api;
 sai_stp_api_t                *sai_stp_api;
 sai_switch_api_t             *sai_switch_api;
+sai_tunnel_api_t             *sai_tunnel_api;
 sai_udf_api_t                *sai_udf_api;
 sai_virtual_router_api_t     *sai_router_api;
 sai_vlan_api_t               *sai_vlan_api;
@@ -66,6 +67,8 @@ void initialize_common_api_pointers()
     common_create[SAI_OBJECT_TYPE_NEIGHBOR] = NULL;
     common_create[SAI_OBJECT_TYPE_ROUTE] = NULL;
     common_create[SAI_OBJECT_TYPE_VLAN] = NULL;
+    common_create[SAI_OBJECT_TYPE_TUNNEL] = NULL;
+    common_create[SAI_OBJECT_TYPE_TUNNEL_TABLE_ENTRY] = NULL;
 
     common_remove[SAI_OBJECT_TYPE_NULL] = NULL;
     common_remove[SAI_OBJECT_TYPE_PORT] = NULL;
@@ -98,6 +101,8 @@ void initialize_common_api_pointers()
     common_remove[SAI_OBJECT_TYPE_NEIGHBOR] = NULL;
     common_remove[SAI_OBJECT_TYPE_ROUTE] = NULL;
     common_remove[SAI_OBJECT_TYPE_VLAN] = NULL;
+    common_remove[SAI_OBJECT_TYPE_TUNNEL] = NULL;
+    common_remove[SAI_OBJECT_TYPE_TUNNEL_TABLE_ENTRY] = NULL;
 
     common_set_attribute[SAI_OBJECT_TYPE_NULL] = NULL;
     common_set_attribute[SAI_OBJECT_TYPE_PORT] = (sai_port_api) ? sai_port_api->set_port_attribute : NULL;
@@ -130,6 +135,8 @@ void initialize_common_api_pointers()
     common_set_attribute[SAI_OBJECT_TYPE_NEIGHBOR] = NULL;
     common_set_attribute[SAI_OBJECT_TYPE_ROUTE] = NULL;
     common_set_attribute[SAI_OBJECT_TYPE_VLAN] = NULL;
+    common_set_attribute[SAI_OBJECT_TYPE_TUNNEL] = NULL;
+    common_set_attribute[SAI_OBJECT_TYPE_TUNNEL_TABLE_ENTRY] = NULL;
 
     common_get_attribute[SAI_OBJECT_TYPE_NULL] = NULL;
     common_get_attribute[SAI_OBJECT_TYPE_PORT] = (sai_port_api) ? sai_port_api->get_port_attribute : NULL;
@@ -162,6 +169,8 @@ void initialize_common_api_pointers()
     common_get_attribute[SAI_OBJECT_TYPE_NEIGHBOR] = NULL;
     common_get_attribute[SAI_OBJECT_TYPE_ROUTE] = NULL;
     common_get_attribute[SAI_OBJECT_TYPE_VLAN] = NULL;
+    common_get_attribute[SAI_OBJECT_TYPE_TUNNEL] = NULL;
+    common_get_attribute[SAI_OBJECT_TYPE_TUNNEL_TABLE_ENTRY] = NULL;
 }
 
 void populate_sai_apis()
@@ -189,6 +198,7 @@ void populate_sai_apis()
     sai_api_query(SAI_API_SCHEDULER_GROUP, (void**)&sai_scheduler_group_api);
     sai_api_query(SAI_API_STP, (void**)&sai_stp_api);
     sai_api_query(SAI_API_SWITCH, (void**)&sai_switch_api);
+    sai_api_query(SAI_API_TUNNEL, (void**)&sai_tunnel_api);
     sai_api_query(SAI_API_UDF, (void**)&sai_udf_api);
     sai_api_query(SAI_API_VIRTUAL_ROUTER, (void**)&sai_router_api);
     sai_api_query(SAI_API_VLAN, (void**)&sai_vlan_api);
@@ -217,6 +227,7 @@ void populate_sai_apis()
     sai_log_set(SAI_API_SCHEDULER_GROUP, SAI_LOG_NOTICE);
     sai_log_set(SAI_API_STP, SAI_LOG_NOTICE);
     sai_log_set(SAI_API_SWITCH, SAI_LOG_NOTICE);
+    sai_log_set(SAI_API_TUNNEL, SAI_LOG_NOTICE);
     sai_log_set(SAI_API_UDF, SAI_LOG_NOTICE);
     sai_log_set(SAI_API_VIRTUAL_ROUTER, SAI_LOG_NOTICE);
     sai_log_set(SAI_API_VLAN, SAI_LOG_NOTICE);
