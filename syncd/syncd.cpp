@@ -696,13 +696,13 @@ sai_status_t handle_tunnel(
             return sai_tunnel_api->create_tunnel(&tunnel_id, attr_count, attr_list);
 
         case SAI_COMMON_API_REMOVE:
-            return sai_tunnel_api->remove_tunnel(&tunnel_id);
+            return sai_tunnel_api->remove_tunnel(tunnel_id);
 
         case SAI_COMMON_API_SET:
-            return sai_tunnel_api->set_tunnel_attribute(&tunnel_id, attr_list);
+            return sai_tunnel_api->set_tunnel_attribute(tunnel_id, attr_list);
 
         case SAI_COMMON_API_GET:
-            return sai_tunnel_api->get_tunnel_attribute(&tunnel_id, attr_count, attr_list);
+            return sai_tunnel_api->get_tunnel_attribute(tunnel_id, attr_count, attr_list);
 
         default:
             SWSS_LOG_ERROR("tunnel other apis not implemented");
