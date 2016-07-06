@@ -305,7 +305,7 @@ sai_status_t sai_api_query(
             return SAI_STATUS_SUCCESS;
 
         case SAI_API_TUNNEL:
-            *(Const sai_tunnel_api_t**)api_method_table = &redis_tunnel_api;
+            *(const sai_tunnel_api_t**)api_method_table = &redis_tunnel_api;
             return SAI_STATUS_SUCCESS;
 
 
