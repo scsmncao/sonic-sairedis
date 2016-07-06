@@ -34,6 +34,6 @@ sai_status_t  redis_create_tunnel(
 /**
  *  @brief tunnel table methods, retrieved via sai_api_query()
  */
-const sai_neighbor_api_t redis_neighbor_api = {
+const sai_tunnel_api_t redis_tunnel_api = {
     redis_create_tunnel,
 };
