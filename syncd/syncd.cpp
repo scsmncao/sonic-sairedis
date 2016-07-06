@@ -710,6 +710,7 @@ sai_status_t handle_vlan(
 //     }
 // }
 
+
 sai_status_t handle_trap(
         _In_ std::string &str_object_id,
         _In_ sai_common_api_t api,
