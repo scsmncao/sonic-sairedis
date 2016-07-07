@@ -67,8 +67,8 @@ void initialize_common_api_pointers()
     common_create[SAI_OBJECT_TYPE_NEIGHBOR] = NULL;
     common_create[SAI_OBJECT_TYPE_ROUTE] = NULL;
     common_create[SAI_OBJECT_TYPE_VLAN] = NULL;
-    common_create[SAI_OBJECT_TYPE_TUNNEL] = NULL;
-    common_create[SAI_OBJECT_TYPE_TUNNEL_TABLE_ENTRY] = NULL;
+    common_create[SAI_OBJECT_TYPE_TUNNEL] = (sai_tunnel_api) ? sai_tunnel_api->create_tunnel : NULL;
+    common_create[SAI_OBJECT_TYPE_TUNNEL_TABLE_ENTRY] = (sai_tunnel_api) ? sai_tunnel_api->create_tunnel_term_table_entry : NULL;
 
     common_remove[SAI_OBJECT_TYPE_NULL] = NULL;
     common_remove[SAI_OBJECT_TYPE_PORT] = NULL;
@@ -101,8 +101,8 @@ void initialize_common_api_pointers()
     common_remove[SAI_OBJECT_TYPE_NEIGHBOR] = NULL;
     common_remove[SAI_OBJECT_TYPE_ROUTE] = NULL;
     common_remove[SAI_OBJECT_TYPE_VLAN] = NULL;
-    common_remove[SAI_OBJECT_TYPE_TUNNEL] = NULL;
-    common_remove[SAI_OBJECT_TYPE_TUNNEL_TABLE_ENTRY] = NULL;
+    common_remove[SAI_OBJECT_TYPE_TUNNEL] = (sai_tunnel_api) ? sai_tunnel_api->remove_tunnel : NULL;
+    common_remove[SAI_OBJECT_TYPE_TUNNEL_TABLE_ENTRY] = (sai_tunnel_api) ? sai_tunnel_api->remove_tunnel_term_table_entry : NULL;
 
     common_set_attribute[SAI_OBJECT_TYPE_NULL] = NULL;
     common_set_attribute[SAI_OBJECT_TYPE_PORT] = (sai_port_api) ? sai_port_api->set_port_attribute : NULL;
@@ -135,8 +135,8 @@ void initialize_common_api_pointers()
     common_set_attribute[SAI_OBJECT_TYPE_NEIGHBOR] = NULL;
     common_set_attribute[SAI_OBJECT_TYPE_ROUTE] = NULL;
     common_set_attribute[SAI_OBJECT_TYPE_VLAN] = NULL;
-    common_set_attribute[SAI_OBJECT_TYPE_TUNNEL] = NULL;
-    common_set_attribute[SAI_OBJECT_TYPE_TUNNEL_TABLE_ENTRY] = NULL;
+    common_set_attribute[SAI_OBJECT_TYPE_TUNNEL] = (sai_tunnel_api) ? sai_tunnel_api->set_tunnel_attribute : NULL;
+    common_set_attribute[SAI_OBJECT_TYPE_TUNNEL_TABLE_ENTRY] = (sai_tunnel_api) ? sai_tunnel_api->set_tunnel_term_table_entry_attribute : NULL;
 
     common_get_attribute[SAI_OBJECT_TYPE_NULL] = NULL;
     common_get_attribute[SAI_OBJECT_TYPE_PORT] = (sai_port_api) ? sai_port_api->get_port_attribute : NULL;
@@ -169,8 +169,8 @@ void initialize_common_api_pointers()
     common_get_attribute[SAI_OBJECT_TYPE_NEIGHBOR] = NULL;
     common_get_attribute[SAI_OBJECT_TYPE_ROUTE] = NULL;
     common_get_attribute[SAI_OBJECT_TYPE_VLAN] = NULL;
-    common_get_attribute[SAI_OBJECT_TYPE_TUNNEL] = NULL;
-    common_get_attribute[SAI_OBJECT_TYPE_TUNNEL_TABLE_ENTRY] = NULL;
+    common_get_attribute[SAI_OBJECT_TYPE_TUNNEL] = (sai_tunnel_api) ? sai_tunnel_api->get_tunnel_attribute : NULL;;
+    common_get_attribute[SAI_OBJECT_TYPE_TUNNEL_TABLE_ENTRY] = (sai_tunnel_api) ? sai_tunnel_api->get_tunnel_term_table_entry_attribute : NULL;
 }
 
 void populate_sai_apis()
