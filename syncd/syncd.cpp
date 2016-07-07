@@ -678,37 +678,37 @@ sai_status_t handle_vlan(
     }
 }
 
-sai_status_t handle_tunnel(
-        _In_ std::string &str_object_id,
-        _In_ sai_common_api_t api,
-        _In_ uint32_t attr_count,
-        _In_ sai_attribute_t *attr_list)
-{
-    SWSS_LOG_ENTER();
+// sai_status_t handle_tunnel(
+//         _In_ std::string &str_object_id,
+//         _In_ sai_common_api_t api,
+//         _In_ uint32_t attr_count,
+//         _In_ sai_attribute_t *attr_list)
+// {
+//     SWSS_LOG_ENTER();
 
-    int index = 0;
-    sai_object_id_t tunnel_id;
-    sai_deserialize_primitive(str_object_id, index, tunnel_id);
+//     int index = 0;
+//     sai_object_id_t tunnel_id;
+//     sai_deserialize_primitive(str_object_id, index, tunnel_id);
 
-    switch(api)
-    {
-        case SAI_COMMON_API_CREATE:
-            return sai_tunnel_api->create_tunnel(&tunnel_id, attr_count, attr_list);
+//     switch(api)
+//     {
+//         case SAI_COMMON_API_CREATE:
+//             return sai_tunnel_api->create_tunnel(&tunnel_id, attr_count, attr_list);
 
-        case SAI_COMMON_API_REMOVE:
-            return sai_tunnel_api->remove_tunnel(tunnel_id);
+//         case SAI_COMMON_API_REMOVE:
+//             return sai_tunnel_api->remove_tunnel(tunnel_id);
 
-        case SAI_COMMON_API_SET:
-            return sai_tunnel_api->set_tunnel_attribute(tunnel_id, attr_list);
+//         case SAI_COMMON_API_SET:
+//             return sai_tunnel_api->set_tunnel_attribute(tunnel_id, attr_list);
 
-        case SAI_COMMON_API_GET:
-            return sai_tunnel_api->get_tunnel_attribute(tunnel_id, attr_count, attr_list);
+//         case SAI_COMMON_API_GET:
+//             return sai_tunnel_api->get_tunnel_attribute(tunnel_id, attr_count, attr_list);
 
-        default:
-            SWSS_LOG_ERROR("tunnel other apis not implemented");
-            exit(EXIT_FAILURE);
-    }
-}
+//         default:
+//             SWSS_LOG_ERROR("tunnel other apis not implemented");
+//             exit(EXIT_FAILURE);
+//     }
+// }
 
 sai_status_t handle_trap(
         _In_ std::string &str_object_id,
@@ -816,10 +816,6 @@ sai_status_t processEvent(swss::ConsumerTable &consumer)
 
         case SAI_OBJECT_TYPE_VLAN:
             status = handle_vlan(str_object_id, api, attr_count, attr_list);
-            break;
-
-        case SAI_OBJECT_TYPE_TUNNEL:
-            status = handle_tunnel(str_object_id, api, attr_count, attr_list);
             break;
 
         case SAI_OBJECT_TYPE_TRAP:
