@@ -710,7 +710,6 @@ sai_status_t handle_vlan(
 //     }
 // }
 
-
 sai_status_t handle_trap(
         _In_ std::string &str_object_id,
         _In_ sai_common_api_t api,
@@ -817,10 +816,6 @@ sai_status_t processEvent(swss::ConsumerTable &consumer)
 
         case SAI_OBJECT_TYPE_VLAN:
             status = handle_vlan(str_object_id, api, attr_count, attr_list);
-            break;
-
-        case SAI_OBJECT_TYPE_TUNNEL:
-            status = handle_tunnel(str_object_id, api, attr_count, attr_list);
             break;
 
         case SAI_OBJECT_TYPE_TRAP:
