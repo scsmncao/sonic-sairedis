@@ -308,7 +308,6 @@ sai_status_t sai_api_query(
             *(const sai_tunnel_api_t**)api_method_table = &redis_tunnel_api;
             return SAI_STATUS_SUCCESS;
 
-
         default:
             SWSS_LOG_ERROR("Invalid API type %d", sai_api_id);
             return SAI_STATUS_INVALID_PARAMETER;
